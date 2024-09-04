@@ -19,7 +19,7 @@ def get_showing_todos(request,all_todo):
 
 @login_required(login_url='login')
 def create_todo(request):
-    all_todo = Todo.objects.all()
+    all_todo = Todo.objects.filter(user=request.user)
     completed_count = all_todo.filter(status=True).count()
     incompleted_count = all_todo.filter(status=False).count()
     all_count = all_todo.count()

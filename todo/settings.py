@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-from decouple import config
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +24,7 @@ SECRET_KEY ="django-insecure-4pz8qa2j!fc(shgj5@9u$kht8c6j(al7i@fcn^t@q)h7goi^vc"
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -136,8 +135,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 
-EMAIL_HOST=config('EMAIL_HOST')
-EMAIL_USE_TLS=config('EMAIL_USE_TLS')
-EMAIL_PORT=config('EMAIL_PORT')
-EMAIL_HOST_USER=config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD=config('EMAIL_HOST_PASSWORD')
+EMAIL_HOST=os.environ.get('EMAIL_HOST')
+EMAIL_USE_TLS=os.environ.get('EMAIL_USE_TLS')
+EMAIL_PORT=os.environ.get('EMAIL_PORT')
+EMAIL_HOST_USER=os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD=os.environ.get('EMAIL_HOST_PASSWORD')
